@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+<head>
+<title>User Registration</title>
+<style>
+body
+{
+background-image:url("325.jpg");
+background-size:cover;
+}
+form {                                         
+    margin: 0 auto; 
+    width: 300px; 
+}
+h1
+{
+text-align:center;
+color:black;
+font-size:60px;
+font-family:calibri;
+}
+.rg{
+background-color:#F2DFDB;
+border:none;
+color:brown;
+padding:1% 1%;
+font-size:150%;
+margin:1% 2%;
+cursor:pointer;
+border-radius:25%;
+font-family:calibri;
+}
+button
+{
+background-color:#F2DFDB;
+border:none;
+color:black;
+padding:1% 1%;
+font-size:150%;
+margin:1% 2%;
+cursor:pointer;
+border-radius:25%;
+font-family:calibri;
+}
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+</style>
+</head>
+<body>
+<h1>USER REGISTRATION</h1>
+<form name="reg"action="" method="post">
+<h3><label>ID:</label><input type="text" name="id"><br/><br/></h3>
+
+<h3><label>Username :</label><input type="text" name="user"><br/><br/></h3>
+<h3><label>Password:</label><input type="password" name="pass"><br/><br/></h3>
+<input type="submit" class="rg" value="Register" name="submit"><br/><br/>
+<!-- Login Link -->
+<h3><a href="loggin.html">LOGIN</a></h3>
+</form>
+<?php
+if(isset($_POST["submit"])){
+ if(!empty($_POST['user']) && !empty($_POST['pass'])){
+	  $id = $_POST['id'];
+
+ $user = $_POST['user'];
+ $pass = $_POST['pass'];
+ $conn = new mysqli('localhost', 'root', '') or die (mysqli_error()); // DB Connection
+ $db = mysqli_select_db($conn, 'test') or die("DB Error"); // Select DB from database
+ //Selecting Database
+ $query = mysqli_query($conn, "SELECT * FROM data WHERE user='".$user."'");
+ $numrows = mysqli_num_rows($query);
+ if($numrows == 0)
+ {
+ //Insert to Mysqli Query
+ $sql = "INSERT INTO data(id,user,pass) VALUES('$id','$user','$pass')";
+ $result = mysqli_query($conn, $sql);
+ //Result Message
+ if($result){
+ echo "Your Account Created Successfully";
+ }
+ else
+ {
+ echo "Failure!";
+ }
+ }
+ 
+ else
+ {
+ echo "That Username already exists! Please try again.";
+ }
+ }
+ else
+ {
+ ?>
+ <!--Javascript Alert -->
+ <script>function validateForm() {
+ 	 var x = document.forms["reg"]["id"].value;
+  if (x == "") {
+    alert("Id must be filled out");
+    return false;}
+  var y = document.forms["reg"]["user"].value;
+  if (y == "") {
+    alert("Name must be filled out");
+    return false;
+  }
+ var z = document.forms["reg"]["pass"].value;
+  if (z == "") {
+    alert("Password must be filled out");
+    return false;
+}
+
+}</script>
+ <?php
+ }
+}
+?>
+</body>
+</html>

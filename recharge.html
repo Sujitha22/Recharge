@@ -1,0 +1,94 @@
+<html>
+<head>
+	<title>Recharge</title></head>
+	<link rel="stylesheet" href="recharge.css">
+	<body>
+		<div class="body">
+		<div class="header">
+			<img src="finger-touching-tablet-screen.png" width="5%" height="90%" style="margin-top:5px;"/><text style="position:absolute;top:5px;color:black;font-family:monotype corsiva;font-size:49px;"><B>Easy Recharge</B></text>
+			<ul>
+		<li><a href="home.html">HOME</a></li>
+			<li><a href="about.html">ABOUT US</a></li>
+			<li ><a href="Contact.html">CONTACT US</a></li>
+			<li class="active"><a href="">RECHARGE</a></li>
+			      <li ><a href="loggin.html">LOG OUT</a></li>
+
+		</ul>
+		</div>
+		<div class="image">
+			<span style="position:absolute;margin-left:630px;margin-top:200px;color:black;font-size: 45px;"><B>Is a Safe place in Unsafe World</B></span>
+		</div>
+		<div class="row">
+			<div class="column left" style="background-color: #B466E8;">
+			<img src="security.png" width="78%" height="80%" style="margin-top: 37px;margin-left: 12px;">
+			</div>
+ 			 <div class="column middle" style="background-color:white;">
+ 			 	<h2 style="background-color: red;color:white;text-align:center;width:50%;margin-left:170px; ">* Recharge</h2>
+ 			 	<div class="box2">
+									<form id="mob_Form" METHOD="POST" name="mob_Form" ACTION="recharge_payment_wc.php" onSubmit="">
+						<input type="hidden" id ="service_type" NAME="service_type" value="1">
+						<ul> 
+ 
+							<li style="position:relative;">
+  							   	<label style="margin-left:40px;">Mobile Number  </label>
+  								<input  type ='text' class='tf1' name='mno'  id='mno' onkeyup="showUser(this.value)" value="">
+								 
+							</li>
+ 
+  							
+                             
+                            <li>
+  							   	<label style="margin-left:40px;">Operator    </label>
+  								<select id="opr" name="opr" class="op11" onchange="toggleOther1(); view_plans();" required>
+								<option  value="" >--Operator--</option> 
+																							<option value="AIRTEL" >AIRTEL</option>
+																								<option value="BSNL" >BSNL</option>
+																								<option value="IDEA" >IDEA</option>
+																								<option value="JIO" >JIO</option>
+																								<option value="MTNL" >MTNL</option>
+																								<option value="MTS" >MTS</option>
+																								<option value="T24" >T24</option>
+																								<option value="TATA DOCOMO" >TATA DOCOMO</option>
+																								<option value="TATA INDICOM" >TATA INDICOM</option>
+																								<option value="Uninor" >Uninor</option>
+																								<option value="Videocon" >Videocon</option>
+																								<option value="VIRGIN CDMA" >VIRGIN CDMA</option>
+																								<option value="VIRGIN GSM" >VIRGIN GSM</option>
+																								<option value="VODAFONE" >VODAFONE</option>
+																	</select>
+                           							
+							<li id="rtypetr"  style="display:none;" ><label>Recharge type:  </label>
+                                <SELECT NAME="rtype" id="rtype"><OPTION VALUE="">Please Select</option><OPTION VALUE="1" >TOPUP</option><OPTION VALUE="2" >Special Recharge</option></SELECT>
+							</li>
+							<li>
+  							   	<label style="margin-left:40px;">Amount (Rs.)*   </label>
+  								<input type="text" class="tf1" name="amo" id="amo" value="" onkeypress="" required>
+							</li>
+						<li>
+							<input type="submit" name="submit" value="Recharge Now" ALT="Recharge Now" class="log_now" onclick="return validation_form(1);"> 
+						</li>
+  						</ul>
+					</form>						
+ 			 	</div>
+ 			 	</div>
+ 			 <div class="column right" style="background-color:#E9C46A;">
+ 		 <ul>
+ 			 <li><B>* Millions of satisfied customers</B></li><br>
+		<li><B>* Easy and instant</B></li><br>
+		<li><B>* Fast and secure</B></li><br>
+		<li><B>* Always available for your support</B></li>
+		<li><B>* User friendly</B></li></ul>
+		</div> </div>
+			<div class="footer">
+				<div class="tab">
+					<table style="margin-left:380px" cellpadding="20px" cellspacing="20px">
+						<tr>
+				<td><img src=" satisfy.png"></td>  	 <td><img src="support.png"></td>	 <td><img src="trust.png"></td></tr>
+				<tr><td>Satisfy</td><td>Support</td><td>Trust</td></tr></table>
+				<p style="color:black;margin-left:20px;">Mobile : Airtel, Vodafone, Idea, Reliance GSM, Bsnl, Tata Indicom, Reliance Jio, Aircel, Reliance CDMA, MTS</p>
+				<p style="color:darkblue;text-align: center;">&copy; Easy Recharge 2019 | All Rights Reserved</p>
+ 			 </div>
+	</div>
+</div> 
+	</body>
+	</html>

@@ -1,0 +1,145 @@
+<html>
+<head>
+	<title>Contact us</title>
+<script>
+$(document).ready(function() {
+	// Test for placeholder support
+    $.support.placeholder = (function(){
+        var i = document.createElement('input');
+        return 'placeholder' in i;
+    })();
+
+    // Hide labels by default if placeholders are supported
+    if($.support.placeholder) {
+        $('.form-label').each(function(){
+            $(this).addClass('js-hide-label');
+        });  
+
+        // Code for adding/removing classes here
+        $('.form-group').find('input, textarea').on('keyup blur focus', function(e){
+            
+            // Cache our selectors
+            var $this = $(this),
+                $parent = $this.parent().find("label");
+					
+						switch(e.type) {
+							case 'keyup': {
+								 $parent.toggleClass('js-hide-label', $this.val() == '');
+							} break;
+							case 'blur': {
+								if( $this.val() == '' ) {
+                    $parent.addClass('js-hide-label');
+                } else {
+                    $parent.removeClass('js-hide-label').addClass('js-unhighlight-label');
+                }
+							} break;
+							case 'focus': {
+								if( $this.val() !== '' ) {
+                    $parent.removeClass('js-unhighlight-label');
+                }
+							} break;
+							default: break;
+						}
+						// previous implementation with ifs
+            /*if (e.type == 'keyup') {
+                if( $this.val() == '' ) {
+                    $parent.addClass('js-hide-label'); 
+                } else {
+                    $parent.removeClass('js-hide-label');   
+                }                     
+            } 
+            else if (e.type == 'blur') {
+                if( $this.val() == '' ) {
+                    $parent.addClass('js-hide-label');
+                } 
+                else {
+                    $parent.removeClass('js-hide-label').addClass('js-unhighlight-label');
+                }
+            } 
+            else if (e.type == 'focus') {
+                if( $this.val() !== '' ) {
+                    $parent.removeClass('js-unhighlight-label');
+                }
+            }*/
+        });
+    } 
+});
+</script>
+</head>
+	<link rel="stylesheet" href="contact.css">
+	<body>
+		<div class="bod">
+		<div class="header">
+			<img src="finger-touching-tablet-screen.png" width="5%" height="90%" style="margin-top:5px;"/><text style="position:absolute;top:5px;color:black;font-family:monotype corsiva;font-size:49px;"><B>Easy Recharge</B></text>
+			<ul>
+		<li><a href="index.html">HOME</a></li>
+			<li><a href="about.html">ABOUT US</a></li>
+			<li class="active"><a href="">CONTACT US</a></li>
+			<li ><a href="recharge.html">RECHARGE</a></li>
+      <li ><a href="loggin.html">LOG OUT</a></li>
+		</ul>
+		</div>
+		<div class="image">
+			<span style="position:absolute;margin-left:630px;margin-top:200px;color:black;font-size: 45px;"><B>Easy Recharge,A Smart Choice</B></span>
+		</div>
+		<div class="row">
+			<div class="column left" style="background-color: #B466E8;">
+			<img src="security.png" width="78%" height="80%" style="margin-top: 37px;margin-left: 12px;">
+			</div>
+ 			 <div class="column middle" style="background-color:lightgray;">
+				<h3 style="text-align:center;color:#0A122A;margin:0;text-decoration:underline;font-family:Arial Black;">Keep in Touch</h3><br>
+				<div class="container">
+  <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">                        
+      </div>
+  </div>
+  <div class="row">
+      <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xs-offset-3">
+          <form id="contact-form" class="form" action="#" method="POST" role="form">
+              <div class="form-group">
+                  <label class="form-label" for="name">Name*</label>
+                  <input type="text" class="form-control" id="name" name="name" placeholder="Name" tabindex="1" size="40px" required>
+              </div> <br>                           
+              <div class="form-group">
+                  <label class="form-label" for="email">Email*</label>
+                  <input type="email" class="form-control" id="email" name="email" placeholder="Email" tabindex="2" size="40px" required>
+              </div><br>                            
+              <div class="form-group">
+                  <label class="form-label" for="subject">Subject*</label>
+                  <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject" tabindex="3" size="40px">
+              </div><br>                            
+              <div class="form-group">
+                  <label class="form-label" for="message">Message</label>
+                  <textarea rows="5" cols="50" name="message" class="form-control" id="message" placeholder="" tabindex="4" required>               	
+                  </textarea>                                 
+              </div>
+              <div class="text-center">
+                  <button type="submit" class="btn btn-start-order">Send Message</button>
+              </div>
+          </form>
+      </div>
+  </div>
+</div>
+		
+ 			 	</div>
+ 			 <div class="column right" style="background-color:#E9C46A;">
+ 		 <ul>
+ 			 <li><B>* Millions of satisfied customers</B></li><br>
+		<li><B>* Easy and instant</B></li><br>
+		<li><B>* Fast and secure</B></li><br>
+		<li><B>* Always available for your support</B></li>
+		<li><B>* User friendly</B></li></ul>
+		</div> </div>
+			<div class="footer">
+				<div class="tab">
+					<table style="margin-left:380px" cellpadding="20px" cellspacing="20px">
+						<tr>
+				<td><img src=" satisfy.png"></td>  	 <td><img src="support.png"></td>	 <td><img src="trust.png"></td></tr>
+				<tr><td>Satisfy</td><td>Support</td><td>Trust</td></tr></table>
+				<p style="color:black;margin-left:20px;">Mobile : Airtel, Vodafone, Idea, Reliance GSM, Bsnl, Tata Indicom, Reliance Jio, Aircel, Reliance CDMA, MTS</p>
+				<p style="color:darkblue;text-align: center;">&copy; Easy Recharge 2019 | All Rights Reserved</p>
+ 			 </div>
+	</div>
+</div> 
+	</body>
+	</html>

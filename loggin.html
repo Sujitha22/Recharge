@@ -1,0 +1,130 @@
+
+<!doctype html>
+<html>
+<head>
+<style>
+body
+{
+background-image:url("325.jpg");
+background-size:cover;
+}
+form {                                         
+    margin: 0 auto; 
+    width: 300px; 
+}
+h1
+{
+color:black;
+text-align: center;
+margin-top:90px;
+font-size:90px;
+font-family:Calibri;
+}
+.rg{
+background-color:#F2DFDB;
+border:none;
+color:black;
+padding:1% 1%;
+font-size:150%;
+margin:1% 2%;
+cursor:pointer;
+border-radius:25%;
+font-family:Calibri;
+}
+button
+{
+background-color:#F2DFDB;
+border:none;
+color:brown;
+padding:1% 1%;
+font-size:150%;
+margin:1% 2%;
+cursor:pointer;
+border-radius:25%;
+font-family:papyrus;
+}
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background:#f1f1f1;
+}
+</style>
+<title>Login</title>
+<script>
+	var attempt = 3; // Variable to count number of attempts.
+// Below function Executes on click of login button.
+function validate(){
+var username = document.getElementById("user").value;
+var password = document.getElementById("pass").value;
+if ( username == "myform" && password == "myform#123"){
+alert ("Login successfully");
+window.location = "index.html"; // Redirecting to other page.
+return false;
+}
+else{
+attempt --;// Decrementing by one.
+alert("You have left "+attempt+" attempt;");
+// Disabling fields after 3 attempts.
+if( attempt == 0){
+document.getElementById("user").disabled = true;
+document.getElementById("pass").disabled = true;
+document.getElementById("submit").disabled = true;
+return false;
+}
+}
+}
+	</script>
+</head>
+<body>
+<h1>LOGIN</h1>
+<form name="myform" action="" method="post">
+<h3>
+<label>Username:</label><input type="text" name="user"><br/></h3>
+<h3><label>Password:</label><input type="password" name="pass"><br/></h3>
+<input type="submit" class="rg" value="Login" name="submit" onclick="validate()"><br/>
+<!--New user Register Link -->
+<h3><p><a href="register.html">New Registeration?</a></p></h3>
+</form>
+<?php
+if(isset($_POST["submit"])){
+ if(!empty($_POST['user']) && !empty($_POST['pass'])){
+ $user = $_POST['user'];
+ $pass = $_POST['pass'];
+ //DB Connection
+ $conn = new mysqli('localhost', 'root', '') or die(mysqli_error());
+ //Select DB From database
+ $db = mysqli_select_db($conn, 'test') or die("databse error");
+ //Selecting database
+ $query = mysqli_query($conn, "SELECT * FROM data WHERE user='".$user."' AND pass='".$pass."'");
+ $numrows = mysqli_num_rows($query);
+ if($numrows !=0)
+ {
+ while($row = mysqli_fetch_assoc($query))
+ {
+ $dbusername=$row['user'];
+ $dbpassword=$row['pass'];
+ }
+ if($user == $dbusername && $pass == $dbpassword)
+ {
+ session_start();
+ $_SESSION['sess_user']=$user;
+ //Redirect Browser
+ header("Location:home.php");
+ }
+ }
+ else
+ {
+ echo "Invalid Username or Password!";
+ }
+ }
+ else
+ {
+ echo "Required All fields!";
+ }
+}
+?>
+</body>
+</html>
